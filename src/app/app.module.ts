@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { ServiceModule } from './services/service.module';
+
 // Routes
 import { AppRoutingModule } from './app-routing.module';
 
@@ -22,7 +24,8 @@ import { RegisterComponent } from './login/register.component';
     BrowserModule,
     AppRoutingModule,
     PagesModule,
-    FormsModule
+    FormsModule,
+    ServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
