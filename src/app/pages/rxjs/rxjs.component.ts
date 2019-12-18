@@ -26,7 +26,6 @@ export class RxjsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    console.log('La pagina se va a cerrar');
     this.subscription.unsubscribe();
   }
 
