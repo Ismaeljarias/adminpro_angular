@@ -7,7 +7,7 @@ import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 import Swal from 'sweetalert2';
-import { SubirArchivoService } from '../service.index';
+import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,33 @@ export class UsuarioService {
     public subirArchivoService:SubirArchivoService
     ) { 
     this.cargarStorage();
+  }
+
+  renuevaToken() {
+
+    let url = URL_SERVICIOS + '/login/renuevatoken';
+    url += '?token=' + this.token;
+
+    return this.http.get( url ).pipe(
+      map( (resp: any) => {
+
+        this.token = resp.token;
+        localStorage.setItem('token', this.token );
+        console.log('Token renovado');
+
+        return true;
+      }),
+      catchError(err => {
+        Swal.fire({
+          title: 'No se pudo renovar token',
+          text: 'No fue posible renovar token',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+      });
+        return throwError(err);
+      })
+    )
+
   }
 
   estaLogueado(){

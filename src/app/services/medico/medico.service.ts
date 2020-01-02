@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
 import { map } from 'rxjs/operators';
 import { UsuarioService } from '../usuario/usuario.service';
+
 import Swal from 'sweetalert2';
 import { Medico } from '../../models/medico.model';
 
